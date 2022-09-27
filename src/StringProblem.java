@@ -217,7 +217,7 @@ public class StringProblem {
 			int now = str.charAt(i);
 			//앞선 문자와 i번째 문자가 같지 않다면?
 			if(prev != now) {
-				//해당 문자가 처음 나온 경우 = false인 경우
+				//해당 문자가 처음 나온 경우 => false인 경우
 				if(check[now - 'a'] == false) {
 					check[now - 'a'] = true;
 					prev = now;
