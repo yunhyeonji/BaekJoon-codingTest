@@ -5,7 +5,7 @@ import java.util.StringTokenizer;
 
 public class Conditional {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(StringProblem[] args) throws IOException {
 /*
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());

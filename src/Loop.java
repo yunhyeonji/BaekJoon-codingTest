@@ -7,7 +7,7 @@ import java.util.StringTokenizer;
 
 public class Loop {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(StringProblem[] args) throws IOException {
 /*
 		Scanner sc = new Scanner(System.in);
 		int num = sc.nextInt();

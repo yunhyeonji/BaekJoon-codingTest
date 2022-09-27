@@ -44,7 +44,7 @@ public class Function {
 		return cnt;
 	}
 	
-	public static void main(String[] args) throws IOException {
+	public static void main(StringProblem[] args) throws IOException {
 /*
 		StringBuilder sb = new StringBuilder();
 		for(int i=1;i<=10000;i++) {

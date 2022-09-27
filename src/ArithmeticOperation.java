@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class ArithmeticOperation {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(StringProblem[] args) throws IOException {
 //		System.out.println("Hello World!!");
 /*		
 		Scanner s = new Scanner(System.in);
