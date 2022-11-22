@@ -1,9 +1,13 @@
+import java.awt.List;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Stack;
+/*
 //스택 클래스
 class Stack{
 	private int top; // 원소의 위치를 관리 할 top 변수.
@@ -42,12 +46,12 @@ class Stack{
 		else {return this.stackArr[top];} // 제일 마지막으로 가리키고 있는 원소 반환. top엔 변화 x
 	}
 }
-
+*/
 public class StackProblem { 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-     
+/*   
      // 명령어 수.
 		int n = Integer.parseInt(br.readLine());
 		
@@ -76,7 +80,121 @@ public class StackProblem {
 		bw.flush();
 		bw.close();		
 		br.close();
-	     
+*/
+/*
+		int n = Integer.parseInt(br.readLine());
+		int[] stackArr = new int[n];
+		
+		int count = -1;
+		for(int i=0;i<n;i++) {
+			int num = Integer.parseInt(br.readLine());
+			
+			if(num != 0) {
+				count++;
+				stackArr[count] = num;		
+			}else {
+				stackArr[count] = 0;
+				count--;
+			}
+		}
+
+		int sum = 0;
+		for(int i=0;i<stackArr.length;i++) {
+			sum += stackArr[i];
+		}
+		System.out.println(sum);
+*/
+/*
+		int n = Integer.parseInt(br.readLine());
+		String[] stackArr = new String[n];  
+		Stack<Character> stack;
+		
+		for(int i=0;i<n;i++) {
+			stack = new Stack<>();
+			String b = br.readLine();
+			
+			try {
+				
+				for(int j=0;j<b.length();j++) {
+					if(b.charAt(j)-'(' == 0) {
+						stack.push('(');
+					}else {
+						stack.pop();
+					}
+				}
+				if(stack.empty()) {stackArr[i] = "YES";}
+				else {stackArr[i] = "NO";}
+				
+			}catch(EmptyStackException e) {
+				stackArr[i] = "no";
+			}
+			
+		}
+		
+		//출력하기
+		for(int i=0;i<stackArr.length;i++) {
+			System.out.println(stackArr[i]);
+		}
+*/
+/*
+		String s = br.readLine();
+		StringBuilder sb = new StringBuilder();
+		
+		//.이 아닐동안 반복
+		while (!s.equals(".")) {
+			//스택 만들기
+			Stack<Character> st = new Stack<>(); 
+			
+			for (int i = 0; i < s.length(); i++) {
+				// ( [ 는 그냥 push하기
+				if(s.charAt(i) == '(' || s.charAt(i) == '[') {
+					st.push(s.charAt(i));
+				}else {
+					// ) 일 경우
+					if(s.charAt(i) == ')') {
+						// 최근 값이 (이고 스택이 비어있지 않다면, pop하기
+						if(!st.isEmpty() && st.peek() == '(') {st.pop();}
+						// 그렇지 않으면 일단 넣어두기 -> empty를 만들지 못하게 함
+						else {st.push(s.charAt(i));}
+					} 
+					// ] 일 경우
+					else if( s.charAt(i) == ']') {
+						if(!st.isEmpty() &&st.peek() == '[') st.pop();
+						else st.push(s.charAt(i));
+					}
+					
+				}
+			}
+			if(st.isEmpty()) {sb.append("YES").append("\n");}
+			else {sb.append("NO").append("\n");}
+			s = br.readLine();
+		}
+		br.close();
+		System.out.println(sb);
+*/
+		StringBuilder sb = new StringBuilder();
+		
+		int num = Integer.parseInt(br.readLine());
+		Stack<Integer> stack = new Stack();
+		int value = 0;
+		
+		for(int i=0;i<num;i++) {
+			int N = Integer.parseInt(br.readLine());
+			
+			if(N>value) {
+				for(int j=value+1;j<=N;j++) {
+					stack.push(j);
+					sb.append("+").append("\n");
+				}
+				value = N;
+			}else if(N != stack.peek()) {
+				System.out.println("NO");
+				return;
+			}	
+			stack.pop();
+			sb.append("-").append("\n");
+		}
+		System.out.println(sb);
 	}
 
 }
