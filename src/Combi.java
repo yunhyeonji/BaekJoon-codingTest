@@ -95,7 +95,7 @@ public class Combi {
 		bw.flush();
 		bw.close();
 */
-/*		
+/*	
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st;
 		
@@ -104,16 +104,64 @@ public class Combi {
 		
 		int N = Integer.parseInt(st.nextToken());
 		int k = Integer.parseInt(st.nextToken());
-		int sum = 1,sumk = 1;
-		for(int i=0;i<k;i++,N--) {
-			sum = sum * N;
-			sumk = sumk * (i+1);
-		}
-		System.out.println(sum/sumk);
-*/
 
+		//nCk = n!/((n-k)!k!)
+		int fact = fac(N) / (fac(N-k)*fac(k));
+		System.out.println(fact);
+*/
+/*		
+		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder sb = new StringBuilder();
+		
+        // 케이스 수
+        int T = Integer.parseInt(reader.readLine());
+        
+        for (int i = 0; i < T; i++)
+        {
+            String[] temp = reader.readLine().split(" ");
+            
+            int N = Integer.parseInt(temp[0]);
+            int M = Integer.parseInt(temp[1]);
+            // N <= M
+            sb.append(combination(M,N)).append("\n");
+        }
+        
+        reader.close();
+		System.out.println(sb);
+*/
+		
 		
 	}
+	//factorial
+	public static int fac(int n) {
+		int j = n;
+		for(int i=n-1;i>0;i--) {
+			j = j*i;
+		}
+		return j;
+	}
+	//또 다른 방법 
+	private static final int[][] dp = new int[31][31];
+	private static int combination(int n, int r)
+    {
+        // 이미 계산된 값일 경우
+        if (dp[n][r] > 0)
+        {
+            return dp[n][r];
+        }
+        
+        // 원소의 갯수가 조합의 갯수와 동일하거나 0일 경우
+        else if (n == r || r == 0)
+        {
+            return dp[n][r] = 1;
+        }
+        
+        // 일반적인 경우 -> 재귀
+        else
+        {
+            return dp[n][r] = combination(n - 1, r - 1) + combination(n - 1, r);
+        }
+    }
 	//유클리드 호제 법
 	public static long getGCD(long a, long b) {
         while(b > 0) {
